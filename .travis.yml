@@ -1,24 +1,25 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-# Use the R testing scheme
-language: r
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-# Test on multiple versions (note requirement of R > 3.0)
+language: r
+sudo: false
+cache: packages
+
 r:
   - oldrel
   - release
   - devel
 
-# Enable package cache
-cache: packages
-
-# Disable sudo to ensure container infrasturcture
-sudo: false
-
-# To CRAN, warnings **are** errors.
-warnings_are_errors: true
-
-# Build on OS
 os:
   - linux
   - osx
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - r: devel
+      os: osx
+
+before_install:
+  - export TZ=US/Central
