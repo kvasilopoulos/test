@@ -1,16 +1,22 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 
-sudo: false
-cache: packages
 
-language: c
+
+language: R
 
 os:
 - linux
 - osx
 
-r:
-- release
-- oldrelease
-- devel
+compiler:
+  - gcc
+  - clang
+
+sudo: false
+cache: packages
+
+#r:
+#- release
+#- oldrelease
+#- devel
