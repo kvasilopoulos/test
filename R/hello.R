@@ -23,12 +23,4 @@ hello <- function() {
   print("Hello, world!")
 }
 
-#' Title
-#'
-#' @return
-#' @export
-#'
-#' @examples
-hello2 <- function() {
-  print("Hi world!")
-}
+
