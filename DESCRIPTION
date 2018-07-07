@@ -10,3 +10,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: covr
+Imports: Rcpp (>= 0.12.17)
+LinkingTo: Rcpp, RcppArmadillo
