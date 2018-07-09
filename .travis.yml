@@ -5,7 +5,6 @@ sudo: false
 cache: packages
 
 r:
-  - oldrel
   - release
   - devel
 
@@ -14,26 +13,6 @@ os:
   - osx
 
 matrix:
-  include:
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
-
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc6 && CC=gcc-6 && CXX=g++-6"
-
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
   fast_finish: true
   allow_failures:
     - r: devel
@@ -41,8 +20,14 @@ matrix:
 
 
 before_install:
-  - export TZ=US/Central
-  - eval "${MATRIX_EVAL}"
+  - uname -a
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then vm_stat; fi
+  - df -h
+  - ulimit -a
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install gcc; brew reinstall gcc --without-multilib; fi
+
+script: make CXX=$COMPILER
+
 
 r_packages:
   - covr
