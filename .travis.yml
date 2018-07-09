@@ -24,7 +24,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then vm_stat; fi
   - df -h
   - ulimit -a
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install gcc; brew reinstall gcc --without-multilib; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install gcc; fi
 
 script: make CXX=$COMPILER
 
