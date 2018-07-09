@@ -19,9 +19,11 @@ matrix:
     - r: devel
       os: osx
 
-before_install:
-  - export TZ=US/Central
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir -p ~/.R && echo "SHLIB_OPENMP_CXXFLAGS = " >>~/.R/Makevars; fi
+sudo: required
+
+before_install: -|
+  curl -LO http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz
+  sudo tar fvxz clang-4.0.0-darwin15.6-Release.tar.gz -C /
 
 r_packages:
   - covr
