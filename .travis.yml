@@ -21,6 +21,7 @@ matrix:
 
 before_install:
   - export TZ=US/Central
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir -p ~/.R && echo "SHLIB_OPENMP_CXXFLAGS = " >>~/.R/Makevars; fi
 
 r_packages:
   - covr
