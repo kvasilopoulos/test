@@ -14,16 +14,35 @@ os:
   - osx
 
 matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc6 && CC=gcc-6 && CXX=g++-6"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
   fast_finish: true
   allow_failures:
     - r: devel
       os: osx
 
-sudo: required
 
-before_install: -|
-  curl -LO http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz
-  sudo tar fvxz clang-4.0.0-darwin15.6-Release.tar.gz -C /
+before_install:
+  - export TZ=US/Central
+  - eval "${MATRIX_EVAL}"
 
 r_packages:
   - covr
