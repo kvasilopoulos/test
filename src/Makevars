@@ -10,10 +10,10 @@
 ## support within Armadillo prefers / requires it
 CC=/usr/local/clang4/bin/clang
 CXX=/usr/local/clang4/bin/clang++
-CXX11=$CXX
-CXX14=$CXX
-CXX17=$CXX
-CXX1X=$CXX
+CXX1X=/usr/local/clang4/bin/clang++
+CXX11=/usr/local/clang4/bin/clang++
+CXX14=/usr/local/clang4/bin/clang++
+CXX17=/usr/local/clang4/bin/clang++
 LDFLAGS=-L/usr/local/clang4/lib
 
 CXX_STD = CXX11
