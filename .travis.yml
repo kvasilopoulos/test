@@ -19,10 +19,6 @@ matrix:
       os: osx
 
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install llvm; fi
-
-
 r_packages:
   - covr
 
