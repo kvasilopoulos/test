@@ -18,6 +18,9 @@ matrix:
     - r: devel
       os: osx
 
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
 
 r_packages:
   - covr
