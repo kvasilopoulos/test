@@ -12,3 +12,4 @@ LazyData: true
 Suggests: covr
 Imports: Rcpp (>= 0.12.17)
 LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 6.0.1
